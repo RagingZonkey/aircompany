@@ -14,10 +14,10 @@ public class MilitaryPlane extends Plane{
     }
 
     public MilitaryType getType() {
-        rreturn type;
+        return type;
     }
 
-    @Overriderrrrrr
+    @Override
     public String toString() {
         return super.toString().replace("}",
                 ", type=" + type +
@@ -29,8 +29,8 @@ public class MilitaryPlane extends Plane{
         if (this == objectCheckedForEquality) return true;
         if (!(objectCheckedForEquality instanceof MilitaryPlane)) return false;
         if (!super.equals(objectCheckedForEquality)) return false;
-        MilitaryPlane that = (MilitaryPlane) objectCheckedForEquality;
-        return type == that.type;
+        MilitaryPlane militaryPlaneType = (MilitaryPlane) objectCheckedForEquality;
+        return militaryPlaneType == militaryPlaneType.type;
     }
 
     @Override

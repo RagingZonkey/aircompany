@@ -20,7 +20,8 @@ public class Airport {
         List<PassengerPlane> passengerPlanes = new ArrayList<>();
         for (Plane plane : planes) {
             if (plane instanceof PassengerPlane) {
-                passengerPlanes.add((PassengerPlane) plane);}}
+                passengerPlanes.add((PassengerPlane) plane);}
+        }
         return passengerPlanes;
     }
 
