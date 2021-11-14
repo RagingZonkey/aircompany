@@ -6,21 +6,17 @@ import Planes.Plane;
 
 import java.util.*;
 
-// version: 1.1
-// made by Vitali Shulha
-// 4-Jan-2019
 
 public class Airport {
     private List<? extends Plane> planes;
 
 
-
     public List<PassengerPlane> getPassengerPlanes() {
-        List<? extends Plane> planes = this.planes;
         List<PassengerPlane> passengerPlanes = new ArrayList<>();
         for (Plane plane : planes) {
             if (plane instanceof PassengerPlane) {
-                passengerPlanes.add((PassengerPlane) plane);}
+                passengerPlanes.add((PassengerPlane) plane);
+            }
         }
         return passengerPlanes;
     }
@@ -47,15 +43,15 @@ public class Airport {
     }
 
     public List<MilitaryPlane> getTransportMilitaryPlanes() {
-    List<MilitaryPlane> transportMilitaryPlanes = new ArrayList<>();
-    List<MilitaryPlane> militaryPlanes = getMilitaryPlanes();
-    for (int i = 0; i < militaryPlanes.size(); i++) {
-        MilitaryPlane plane = militaryPlanes.get(i);
-        if (plane.getType() == MilitaryType.TRANSPORT) {
-           transportMilitaryPlanes.add(plane);
+        List<MilitaryPlane> transportMilitaryPlanes = new ArrayList<>();
+        List<MilitaryPlane> militaryPlanes = getMilitaryPlanes();
+        for (int i = 0; i < militaryPlanes.size(); i++) {
+            MilitaryPlane plane = militaryPlanes.get(i);
+            if (plane.getMilitaryType() == MilitaryType.TRANSPORT) {
+                transportMilitaryPlanes.add(plane);
+            }
         }
-    }
-    return transportMilitaryPlanes;
+        return transportMilitaryPlanes;
     }
 
     public List<MilitaryPlane> getBomberMilitaryPlanes() {
@@ -63,18 +59,19 @@ public class Airport {
         List<MilitaryPlane> militaryPlanes = getMilitaryPlanes();
         for (int i = 0; i < militaryPlanes.size(); i++) {
             MilitaryPlane plane = militaryPlanes.get(i);
-            if (plane.getType() == MilitaryType.BOMBER) {
+            if (plane.getMilitaryType() == MilitaryType.BOMBER) {
                 bomberMilitaryPlanes.add(plane);
             }
         }
         return bomberMilitaryPlanes;
+
     }
 
     public List<ExperimentalPlane> getExperimentalPlanes() {
-        List<experimentalPlane> experimentalPlanes = new ArrayList<>();
+        List<ExperimentalPlane> experimentalPlanes = new ArrayList<>();
         for (Plane plane : planes) {
-            if (plane instanceof experimentalPlane) {
-                experimentalPlanes.add((experimentalPlane) plane);
+            if (plane instanceof ExperimentalPlane) {
+                experimentalPlanes.add((ExperimentalPlane) plane);
             }
         }
         return experimentalPlanes;
@@ -89,8 +86,6 @@ public class Airport {
         return this;
     }
 
-
-
     public Airport sortByMaxSpeed() {
         Collections.sort(planes, new Comparator<Plane>() {
             public int compare(Plane firstPlaneToCompare, Plane secondPlaneToCompare) {
@@ -102,7 +97,7 @@ public class Airport {
 
     public Airport sortByMaxLoadCapacity() {
         Collections.sort(planes, new Comparator<Plane>() {
-            public int comparePlanes(Plane firstPlaneToCompare, Plane secondPlaneToCompare) {
+            public int compare(Plane firstPlaneToCompare, Plane secondPlaneToCompare) {
                 return firstPlaneToCompare.getMaxLoadCapacity() - secondPlaneToCompare.getMaxLoadCapacity();
             }
         });
@@ -113,10 +108,10 @@ public class Airport {
         return planes;
     }
 
-    private void printPlanes(Collection<? extends Plane> collectionOfPlanes) {
-        Iterator<? extends Plane> planeIterator = collectionOfPlanes.planeIterator();
-        while (planeIterator.hasNext()) {
-            Plane plane = planeIterator.next();
+    private void printPlanes(Collection<? extends Plane> planeCollection) {
+        Iterator<? extends Plane> planesIterator = planeCollection.iterator();
+        while (planesIterator.hasNext()) {
+            Plane plane = planesIterator.next();
             System.out.println(plane);
         }
     }
@@ -127,7 +122,6 @@ public class Airport {
                 "Planes=" + planes.toString() +
                 '}';
     }
-
 
     public Airport(List<? extends Plane> planes) {
         this.planes = planes;

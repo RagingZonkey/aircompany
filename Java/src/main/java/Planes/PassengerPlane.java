@@ -20,17 +20,18 @@ public class PassengerPlane extends Plane{
     public String toString() {
         return super.toString().replace("}",
                 ", passengersCapacity=" + passengersCapacity +
-                '}');
+                        '}');
     }
-
 
     @Override
     public boolean equals(Object objectCheckedForEquality) {
-        if (this == objectCheckedForEquality) return true;
-        if (!(objectCheckedForEquality instanceof PassengerPlane)) return false;
-        if (!super.equals(objectCheckedForEquality)) return false;
-        PassengerPlane plane = (PassengerPlane) objectCheckedForEquality;
-        return passengersCapacity == plane.passengersCapacity;
+        if (this == objectCheckedForEquality) {
+            return true;
+        }
+        if (!(objectCheckedForEquality instanceof PassengerPlane) || !super.equals(objectCheckedForEquality)) {
+            return false;
+        }
+        return passengersCapacity == ((PassengerPlane) objectCheckedForEquality).passengersCapacity;
     }
 
     @Override
