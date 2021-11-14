@@ -1,4 +1,4 @@
-package Planes;
+package planes;
 
 import java.util.Objects;
 
@@ -16,6 +16,23 @@ public class PassengerPlane extends Plane{
         return passengersCapacity;
     }
 
+
+    @Override
+    public boolean equals(Object objectCheckedForEquality) {
+        if (this == objectCheckedForEquality) {
+            return true;
+        }
+        if ((objectCheckedForEquality instanceof PassengerPlane) && super.equals(objectCheckedForEquality)) {
+            return passengersCapacity == ((PassengerPlane) objectCheckedForEquality).passengersCapacity;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), passengersCapacity);
+    }
+
     @Override
     public String toString() {
         return super.toString().replace("}",
@@ -23,19 +40,4 @@ public class PassengerPlane extends Plane{
                         '}');
     }
 
-    @Override
-    public boolean equals(Object objectCheckedForEquality) {
-        if (this == objectCheckedForEquality) {
-            return true;
-        }
-        if (!(objectCheckedForEquality instanceof PassengerPlane) || !super.equals(objectCheckedForEquality)) {
-            return false;
-        }
-        return passengersCapacity == ((PassengerPlane) objectCheckedForEquality).passengersCapacity;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), passengersCapacity);
-    }
 }

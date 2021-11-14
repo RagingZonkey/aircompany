@@ -1,4 +1,4 @@
-package Planes;
+package planes;
 
 import models.MilitaryType;
 
@@ -18,23 +18,24 @@ public class MilitaryPlane extends Plane{
     }
 
     @Override
-    public String toString() {
-        return super.toString().replace("}",
-                ", type=" + militaryType +
-                        '}');
-    }
-
-    @Override
     public boolean equals(Object objectCheckedForEquality) {
         if (this == objectCheckedForEquality) return true;
-        if (!(objectCheckedForEquality instanceof MilitaryPlane) || !super.equals(objectCheckedForEquality)) {
-            return false;
+        if ((objectCheckedForEquality instanceof MilitaryPlane) && super.equals(objectCheckedForEquality)) {
+            return militaryType == ((MilitaryPlane) objectCheckedForEquality).militaryType;
         }
-        return militaryType == ((MilitaryPlane) objectCheckedForEquality).militaryType;
+        return false;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), militaryType);
     }
+
+    @Override
+    public String toString() {
+        return super.toString().replace("}",
+                ", type=" + militaryType +
+                        '}');
+    }
+
 }

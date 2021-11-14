@@ -1,8 +1,8 @@
-package Planes;
+package planes;
 
 import java.util.Objects;
 
-abstract public class Plane {
+public abstract class Plane {
 
     String model;
     private int maxSpeed;
@@ -16,9 +16,6 @@ abstract public class Plane {
         this.maxLoadCapacity = maxLoadCapacity;
     }
 
-    public String getModel() {
-        return model;
-    }
 
     public int getMaxSpeed() {
         return maxSpeed;
@@ -33,15 +30,6 @@ abstract public class Plane {
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "Plane{" +
-                "model='" + model + '\'' +
-                ", maxSpeed=" + maxSpeed +
-                ", maxFlightDistance=" + maxFlightDistance +
-                ", maxLoadCapacity=" + maxLoadCapacity +
-                '}';
-    }
 
     @Override
     public boolean equals(Object objectCheckedForEquality) {
@@ -62,4 +50,15 @@ abstract public class Plane {
     public int hashCode() {
         return Objects.hash(model, maxSpeed, maxFlightDistance, maxLoadCapacity);
     }
+
+    @Override
+    public String toString() {
+        return "Plane{" +
+                "model='" + model + '\'' +
+                ", maxSpeed=" + maxSpeed +
+                ", maxFlightDistance=" + maxFlightDistance +
+                ", maxLoadCapacity=" + maxLoadCapacity +
+                '}';
+    }
+
 }

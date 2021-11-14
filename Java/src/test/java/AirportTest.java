@@ -1,15 +1,14 @@
-import Planes.ExperimentalPlane;
+import planes.ExperimentalPlane;
 import models.ClassificationLevel;
 import models.ExperimentalTypes;
 import models.MilitaryType;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import Planes.MilitaryPlane;
-import Planes.PassengerPlane;
-import Planes.Plane;
+import planes.MilitaryPlane;
+import planes.PassengerPlane;
+import planes.Plane;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -35,11 +34,6 @@ public class AirportTest {
 
     private static PassengerPlane planeWithMaxPassengerCapacity = new PassengerPlane("Boeing-747", 980, 16100, 70500, 242);
 
-    @Test
-    public void testHasAtLeastOneTransportInMilitaryPlanes() {
-        List<MilitaryPlane> transportMilitaryPlanes = (new Airport(planes)).getTransportMilitaryPlanes();
-        Assert.assertNotNull(transportMilitaryPlanes.stream().filter(plane -> plane.getMilitaryType() == MilitaryType.TRANSPORT));
-    }
 
 
     @Test
@@ -57,11 +51,6 @@ public class AirportTest {
         Assert.assertEquals(planesSortedByMaxLoadCapacity, expectedOrderOfPlanesSortedByMaxLoadCapacity);
     }
 
-    @Test
-    public void testHasAtLeastOneBomberInMilitaryPlanes() {
-        List<MilitaryPlane> bomberMilitaryPlanes = new Airport(planes).getBomberMilitaryPlanes();
-        Assert.assertNotNull(bomberMilitaryPlanes.stream().filter(plane -> plane.getMilitaryType() == MilitaryType.BOMBER));
-    }
 
     @Test
     public void testExperimentalPlanesHasClassificationLevelHigherThanUnclassified(){
@@ -69,4 +58,6 @@ public class AirportTest {
         Assert.assertFalse(experimentalPlanes.stream().
                 anyMatch(plane -> plane.getClassificationLevel() == ClassificationLevel.UNCLASSIFIED));
     }
+
+
 }
